@@ -1,0 +1,5 @@
+<?php $photo = productPhoto($p); ?>
+<article class="product-card reveal" data-name="<?= e(strtolower($p['name'])) ?>" data-category="<?= e($p['category']) ?>" data-price="<?= (float)$p['price'] ?>">
+  <div class="product-visual"><a href="?page=product&id=<?= (int)$p['id'] ?>"><img loading="lazy" src="<?= e($photo) ?>" alt="Photo illustrative : <?= e($p['name']) ?>"></a><span class="tag">Coup de cœur</span><button class="favorite" type="button" data-favorite="<?= (int)$p['id'] ?>" aria-label="Ajouter aux favoris" aria-pressed="false">♡</button></div>
+  <div class="product-meta"><span><?= e($p['category']) ?></span><a href="?page=product&id=<?= (int)$p['id'] ?>"><h3><?= e($p['name']) ?></h3></a><div class="price-row"><strong><?= money((float)$p['price']) ?></strong><form method="post"><input type="hidden" name="csrf" value="<?= e($_SESSION['csrf']) ?>"><input type="hidden" name="action" value="add"><input type="hidden" name="id" value="<?= (int)$p['id'] ?>"><button class="add-round" aria-label="Ajouter <?= e($p['name']) ?> au panier">+</button></form></div></div>
+</article>
